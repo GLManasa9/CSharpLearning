@@ -1,16 +1,18 @@
 ﻿using NUnit.Framework;
 using System;
 
-namespace BankProject
+namespace BankProject.SOLID
 {
-    interface ICustomer {
+    interface ICustomer
+    {
         string name { get; set; }
         int age { set; get; }
         string productName { get; set; }
         decimal calculateDiscount();
     }
 
-    interface ICustomerWithInterest : ICustomer {
+    interface ICustomerWithInterest : ICustomer
+    {
         void calculateInterest();
     }
 
@@ -27,7 +29,7 @@ namespace BankProject
 
     public class GoldCustomer : Customer
     {
-     
+
         public override decimal calculateDiscount()
         {
             Console.WriteLine("Discount on gold products is 5%");
@@ -69,7 +71,7 @@ namespace BankProject
             gc.calculateDiscount();
             Console.WriteLine(gc.name);
             Console.WriteLine(gc.age);
-            sc.calculateDiscount(); 
+            sc.calculateDiscount();
             Console.WriteLine(sc.name);
             Console.WriteLine(sc.age);
             ICustomerWithInterest gc_interest = new GoldCustomer();

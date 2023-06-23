@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using System;
 
-namespace BankProject
+namespace BankProject.Selenium
 {
     public class Basics
     {
@@ -19,30 +19,30 @@ namespace BankProject
         [Test(Author = "Manasa"), Order(2)]
         [TestCase("Hellow Manasa")]
         [Ignore("Ignore this test due to open bug")]
-        public void Test1(String printText)
+        public void Test1(string printText)
         {
             Console.WriteLine(printText);
             Console.WriteLine("Hello World");
             driver.Navigate().GoToUrl("https://www.google.com/");
-            String title = driver.Title;
+            string title = driver.Title;
             Console.WriteLine("Title:" + title);
             driver.Close();
         }
 
         [Test(Author = "Manasa"), Order(2)]
         [TestCase("Hellow Manasa")]
-        public void First(String printText)
+        public void First(string printText)
         {
             Console.WriteLine(printText);
             Console.WriteLine("Hello World");
             driver.Navigate().GoToUrl("https://www.google.com/");
-            String title = driver.Title;
+            string title = driver.Title;
             Console.WriteLine("Title:" + title);
             driver.Close();
         }
 
-        [Test,Order(1)]
-        public void Test2([Values("C# Selenium")]string text)
+        [Test, Order(1)]
+        public void Test2([Values("C# Selenium")] string text)
         {
             driver.Navigate().GoToUrl("https://www.google.com/");
             By searchBoxLocator = By.CssSelector("textarea#APjFqb");
