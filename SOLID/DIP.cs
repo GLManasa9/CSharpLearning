@@ -3,14 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BankProject
+namespace BankProject.SOLID
 {
 
-    public interface ISalaryCalculator {
+    public interface ISalaryCalculator
+    {
         float CalculateSalary(int hoursWorked, float hourlyRate);
     }
 
-    public interface IEarnedLeavesCalculator {
+    public interface IEarnedLeavesCalculator
+    {
         int CalculateEarnedLeaves(int daysWorked);
     }
 
@@ -19,7 +21,8 @@ namespace BankProject
         public float CalculateSalary(int hoursWorked, float hourlyRate) => hoursWorked * hourlyRate;
     }
 
-    internal class EarnedLeavesCalculator : IEarnedLeavesCalculator {
+    internal class EarnedLeavesCalculator : IEarnedLeavesCalculator
+    {
         public int CalculateEarnedLeaves(int daysWorked) => daysWorked / 4;
     }
 
@@ -32,7 +35,8 @@ namespace BankProject
         public float HourlyRate { get; set; }
         public int DaysWorked { get; set; }
 
-        public EmployeeDetails(ISalaryCalculator salaryCalculator) {
+        public EmployeeDetails(ISalaryCalculator salaryCalculator)
+        {
             _salaryCalculator = salaryCalculator;
         }
 
@@ -42,7 +46,8 @@ namespace BankProject
             _earnedLeavesCalculator = earnedLeavesCalculator;
         }
 
-        public float GetSalary() { 
+        public float GetSalary()
+        {
             return _salaryCalculator.CalculateSalary(HoursWorked, HourlyRate);
         }
 
@@ -64,12 +69,13 @@ namespace BankProject
                 HourlyRate = 150
             };
             Console.WriteLine($"Employee Salary={employeeDetails.GetSalary()}");
-            EmployeeDetails employeeDetails1 = new EmployeeDetails(new SalaryCalculator(), new EarnedLeavesCalculator()) {
-                DaysWorked = 60           
+            EmployeeDetails employeeDetails1 = new EmployeeDetails(new SalaryCalculator(), new EarnedLeavesCalculator())
+            {
+                DaysWorked = 60
             };
             Console.WriteLine($"Earned Leaves={employeeDetails1.GetEarnedLeaves()}");
         }
     }
-   
+
 
 }
