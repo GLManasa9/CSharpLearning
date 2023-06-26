@@ -5,6 +5,7 @@ using System;
 
 namespace BankProject.Selenium
 {
+    [TestFixture]
     public class Basics
     {
         private IWebDriver driver;
@@ -29,8 +30,8 @@ namespace BankProject.Selenium
             driver.Close();
         }
 
-        [Test(Author = "Manasa"), Order(2)]
-        [TestCase("Hellow Manasa")]
+        [Test(Author = "Manasa")]
+        [TestCase("Hi Manasa")]
         public void First(string printText)
         {
             Console.WriteLine(printText);
