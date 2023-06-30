@@ -10,11 +10,12 @@ namespace BankProject.Selenium
     {
         private IWebDriver driver;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             driver = new EdgeDriver();
             driver.Manage().Window.Maximize();
+            Console.WriteLine("Inside setup");
         }
 
         [Test(Author = "Manasa"), Order(2)]
@@ -27,7 +28,6 @@ namespace BankProject.Selenium
             driver.Navigate().GoToUrl("https://www.google.com/");
             string title = driver.Title;
             Console.WriteLine("Title:" + title);
-            driver.Close();
         }
 
         [Test(Author = "Manasa")]
@@ -36,10 +36,10 @@ namespace BankProject.Selenium
         {
             Console.WriteLine(printText);
             Console.WriteLine("Hello World");
-            driver.Navigate().GoToUrl("https://www.google.com/");
+            driver.Url="https://www.google.com/";
             string title = driver.Title;
             Console.WriteLine("Title:" + title);
-            driver.Close();
+            Console.WriteLine("URL:" + driver.Url);
         }
 
         [Test, Order(1)]
@@ -50,7 +50,14 @@ namespace BankProject.Selenium
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             driver.FindElement(searchBoxLocator).SendKeys(text);
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
-            driver.Close();
+        }
+
+        [OneTimeTearDown]
+        public void TearDown()
+        {
+            Console.WriteLine("Inside teardown");
+            driver.Quit();
+            driver = null;
         }
     }
 }
