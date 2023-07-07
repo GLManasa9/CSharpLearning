@@ -9,12 +9,12 @@ namespace BankProject.RestSharp
     internal class LatestAPIProgram
     {
         [Test]
-        public void getMethod() {
+        public void GetMethod() {
             var client = new RestClient("https://reqres.in/api/");
             var request = new RestRequest("users",Method.Get);
             request.AddParameter("page", 2);
             var response = client.Execute(request);
-            //Console.WriteLine(response.Content);
+            Console.WriteLine(response.Content);
 
             client = new RestClient("https://reqres.in/api/");
             request = new RestRequest("users");
